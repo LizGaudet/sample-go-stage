@@ -44,8 +44,5 @@ jobs:
       - name: Push image to registry
         uses: cloudbees-io/kaniko@v1
         with:
-            dockerfile: Dockerfile
-            context: .
-            destination: index.docker.io/${{ vars.QUICKSTART_DOCKER_USERNAME }}/my-sample-go-app
-            build-args: BUILDKIT_CONTEXT_KEEP_GIT_DIR=1,BUILDKIT_INLINE_CACHE=1
+          destination: index.docker.io/${{ vars.QUICKSTART_DOCKER_USERNAME }}/my-sample-go-app:1.0.0
     
