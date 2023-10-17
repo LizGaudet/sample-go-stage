@@ -41,4 +41,8 @@ jobs:
               }
           }
           EOF
-      
+      - name: Push image to registry
+        uses: cloudbees-io/kaniko@v1
+        with:
+            destination: index.docker.io/${{ vars.QUICKSTART_DOCKER_USERNAME }}/my-sample-go-app
+    
