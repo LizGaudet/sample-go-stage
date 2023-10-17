@@ -30,7 +30,7 @@ jobs:
           DOCKER_USERNAME: ${{ vars.QUICKSTART_DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.QUICKSTART_DOCKER_PASSWORD }}
         run: |
-          AUTH=$(echo -n "${DOCKER_USERNAME}:{DOCKER_PASSWORD}" | base64)
+          AUTH=$(echo -n "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" | base64)
           mkdir -p $HOME/.docker
           cat << EOF > "$HOME/.docker/config.json"
           {
