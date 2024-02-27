@@ -26,6 +26,7 @@ type Flags struct {
 var flags = &Flags{
         // Define the feature flags
         EnableTutorial: server.NewRoxFlag(false),
+    
 }
 
 var rox *server.Rox
@@ -44,7 +45,17 @@ func main() {
         <-rox.Setup("5f82220d-8dfd-4b74-7460-ab0fe9b4112c", options)
 
         // Boolean flag example
-        fmt.Println("EnableTutorial's value is " + flags.EnableTutorial.IsEnabled(nil))
+        fmt.Println("EnableTutorial's value is " + flags.EnableTutorial.IsEnabled())
+    //lg added
+    var container = &Container {
+  Variant: server.LGRoxString("red", []string{"red", "blue", "green"})
+}
+
+ctx := context.NewContext(map[string]interface{}{"gender": "female"})
+container.VariantWithContext.GetValue(ctx)
+    
+    
+    
 
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*")
