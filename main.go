@@ -45,7 +45,7 @@ func main() {
         <-rox.Setup("5f82220d-8dfd-4b74-7460-ab0fe9b4112c", options)
 
         // Boolean flag example
-        fmt.Println("EnableTutorial's value is " + flags.EnableTutorial.IsEnabled())
+
 
     
     
