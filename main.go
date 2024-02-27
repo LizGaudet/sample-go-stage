@@ -1,8 +1,22 @@
 package main
 
-// Import CloudBees platform SDK
-import "fmt"
-import "github.com/rollout/rox-go/v5/server"
+import (
+	"crypto/sha256"
+	"encoding/hex"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
+	"strconv"
+	"strings"
+
+	"github.com/gin-gonic/gin"
+    // Import CloudBees platform SDK
+"fmt"
+"github.com/rollout/rox-go/v5/server"
+)
+
+
 
 // Create Rox flags in the Flags container class
 type Flags struct {
@@ -15,6 +29,7 @@ var flags = &Flags{
 }
 
 var rox *server.Rox
+
 
 func main() {
 
@@ -30,22 +45,7 @@ func main() {
 
         // Boolean flag example
         fmt.Println("EnableTutorial's value is " + flags.EnableTutorial.IsEnabled(nil))
-}
 
-import (
-	"crypto/sha256"
-	"encoding/hex"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"os"
-	"strconv"
-	"strings"
-
-	"github.com/gin-gonic/gin"
-)
-
-func main() {
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*")
 
