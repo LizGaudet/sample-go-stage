@@ -12,7 +12,7 @@ import (
 
 	"github.com/gin-gonic/gin"
     // Import CloudBees platform SDK
-"fmt"
+
 "github.com/rollout/rox-go/v5/server"
 )
 
