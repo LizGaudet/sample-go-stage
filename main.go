@@ -1,5 +1,37 @@
 package main
 
+// Import CloudBees platform SDK
+import "fmt"
+import "github.com/rollout/rox-go/v5/server"
+
+// Create Rox flags in the Flags container class
+type Flags struct {
+        EnableTutorial server.RoxFlag
+}
+
+var flags = &Flags{
+        // Define the feature flags
+        EnableTutorial: server.NewRoxFlag(false),
+}
+
+var rox *server.Rox
+
+func main() {
+
+        options := server.NewRoxOptions(server.RoxOptionsBuilder{})
+
+        rox := server.NewRox()
+
+        // Register the flags container with the CloudBees platform
+        rox.RegisterWithEmptyNamespace(flags)
+
+        // Setup the feature management environment key
+        <-rox.Setup("5f82220d-8dfd-4b74-7460-ab0fe9b4112c", options)
+
+        // Boolean flag example
+        fmt.Println("EnableTutorial's value is " + flags.EnableTutorial.IsEnabled(nil))
+}
+
 import (
 	"crypto/sha256"
 	"encoding/hex"
