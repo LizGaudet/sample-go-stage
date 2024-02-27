@@ -46,14 +46,7 @@ func main() {
 
         // Boolean flag example
         fmt.Println("EnableTutorial's value is " + flags.EnableTutorial.IsEnabled())
-    //lg added
-    var container = &Container {
-  Variant: server.LGRoxString("red", []string{"red", "blue", "green"})
-}
 
-ctx := context.NewContext(map[string]interface{}{"gender": "female"})
-container.VariantWithContext.GetValue(ctx)
-    
     
     
 
