@@ -6,6 +6,9 @@ on:
     branches:
       - demo-branch
   workflow_dispatch:
+  pull_request:
+    branches:
+      - demo-branch
 jobs:
   build:
     steps:
