@@ -2,10 +2,6 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
 on:
-  push:
-    branches:
-      - demo-branch
-      - test
   workflow_dispatch:
   pull_request:
     branches:
