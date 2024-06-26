@@ -3,6 +3,9 @@ kind: workflow
 name: My workflow
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - demo-branch
 jobs:
   build:
     steps:
