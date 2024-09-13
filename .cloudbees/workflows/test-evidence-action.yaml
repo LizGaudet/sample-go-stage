@@ -1,0 +1,67 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Test Evidence Action
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    steps:
+      - uses: cloudbees-io/publish-evidence-item
+        name: Evidence markdown examples
+        id: evidence_step
+        with:
+          content: |-
+            # Markdown evidence
+            ## List
+            - Run ID: ${{ cloudbees.run_id }}
+            - [backend.tar](https://ourcompany.com/repo/backend.tar)
+
+            ## Numbered list
+            1. Test 1 - Frontend
+            1. Test 2 - Backend
+            1. Test 3 - Data layer
+
+            ## Code
+            ```
+            jobs:
+              build:
+                steps:
+                  - Compile
+            ```
+            ## Table
+            | Test     | Reults  |
+            | -------- | ------- |
+            | Test 1   | PASS    |
+            | Test 2   | FAIL    |
+            | Test 3   | PASS    |
+
+            > Quoted text
+
+            ## Formating
+            - **bold text**
+            - _italics_
+            - ~~strike through~~
+
+            ![CloudBees Platform](https://images.ctfassets.net/vtn4rfaw6n2j/1XFoZ95AdPdToTZvmwCQqt/d48c4fc0ebcf85a0dae952fc7ce5378a/CPEMap_Zoom.gif)
+      - uses: cloudbees-io/publish-evidence-item@v1
+        name: Second evidence step
+        with:
+          content: |-
+            Simple text
+            - bullet 1
+            - bullet 2
+      - uses: cloudbees-io/publish-evidence-item@v1
+        name: Third evidence step
+        with:
+          content: |-
+            # multiline
+            > block quotes
+            > block quote 2
+      - uses: cloudbees-io/publish-evidence-item@v1
+        name: Forth evidence step
+        with:
+          content: "# Forth evidence item"
+      - uses: cloudbees-io/publish-evidence-item@v1
+        name: Fifth evidence
+        with:
+          content: "# 5th Evidence"
