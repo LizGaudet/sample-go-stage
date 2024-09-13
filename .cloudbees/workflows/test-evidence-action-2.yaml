@@ -12,7 +12,8 @@ jobs:
         with:
           content: |-
             ## Deployment results
-            - Application endpoint:[https://app.ourcompany.com/qa](https://app.ourcompany.com/qa)
+            - Application endpoint: [https://app.ourcompany.com/qa](https://app.ourcompany.com/qa)
+            - Artifacts:
               - [backend.jar](https://ourcompany.com/repo/backend.jar)
               - [frontend.jar](https://ourcompany.com/repo/frontend.jar)
 
@@ -22,4 +23,4 @@ jobs:
             | [FE1](https://ourcompany.com/repo/frontend.jar) | 1:15          | PASS     |
             | [BE2](https://ourcompany.com/repo/frontend.jar) | 10:05         | FAIL     |
             | [INT1](https://ourcompany.com/repo/frontend.jar) | 15:15        | PASS     |
-            | [INT2](https://ourcompany.com/repo/frontend.jar) | 20:10*       | ~RUNNING~|
+            | [INT2](https://ourcompany.com/repo/frontend.jar) | 20:10*       | _RUNNING_|
