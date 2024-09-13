@@ -1,0 +1,25 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Test Evidence Action
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    steps:
+      - uses: cloudbees-io/publish-evidence-item
+        name: Evidence markdown examples
+        id: evidence_step
+        with:
+          content: |-
+            ## Deployment results
+            - Application endpoint:[https://app.ourcompany.com/qa](https://app.ourcompany.com/qa)
+              - [backend.jar](https://ourcompany.com/repo/backend.jar)
+              - [frontend.jar](https://ourcompany.com/repo/frontend.jar)
+
+            ## Smoketest results
+            | Test | Runtime (m:s) | Result   |
+            | ---- | ------------- | -------- |
+            | [FE1](https://ourcompany.com/repo/frontend.jar) | 1:15          | PASS     |
+            | [BE2](https://ourcompany.com/repo/frontend.jar) | 10:05         | FAIL     |
+            | [INT1](https://ourcompany.com/repo/frontend.jar) | 15:15        | PASS     |
+            | [INT2](https://ourcompany.com/repo/frontend.jar) | 20:10*       | ~RUNNING~|
