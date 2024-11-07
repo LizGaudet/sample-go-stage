@@ -10,18 +10,21 @@ jobs:
   ci-job:
     steps:
       - uses: docker://alpine/git:latest
+        kind: test
         run: |
           git config --global --add safe.directory /cloudbees/workspace
-      - name: checkout
-        uses: cloudbees-io/checkout@v1
-      - name: Build Go app
-        uses: docker://golang:1.20
+      - uses: cloudbees-io/checkout@v1
+        name: checkout
+      - uses: docker://golang:1.20
+        name: Build Go app
+        kind: build
         run: |
           go build -v ./...
-      - name: Run tests
-        uses: docker://golang:1.20
+      - uses: docker://golang:1.20
+        name: Run tests
+        kind: test
         run: |
           go test -v ./...
-      - name: Scan with SonarQube bundled 
-        uses: cloudbees-io/sonarqube-bundled-sast-scan-code@v1
+      - uses: cloudbees-io/sonarqube-bundled-sast-scan-code@v1
+        name: Scan with SonarQube bundled
         kind: scan
