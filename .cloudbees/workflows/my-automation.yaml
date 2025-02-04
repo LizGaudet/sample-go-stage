@@ -18,6 +18,7 @@ jobs:
       - uses: docker://golang:1.20
         name: Build Go app
         kind: build
+        labels: maintainer=compliance,email=engineering@cloudbees.io
         run: |
           go build -v ./...
       - uses: docker://golang:1.20
